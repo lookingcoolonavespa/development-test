@@ -38,13 +38,13 @@ function App() {
         <div className="App flex-column border-box">
           <header>
             <PageHeader
-              title={"Kermit's General Shop"}
+              title={"Kermit's General Store"}
               description={
                 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, illo. Nemo illum consequuntur architecto repellat quo, eius deserunt reiciendis repellendus.'
               }
             />
           </header>
-          <section
+          <main
             className={`main_content border-box ${
               isMobile.current ? 'mobile' : ''
             }`}
@@ -75,7 +75,7 @@ function App() {
                 Go back to products
               </button>
             )}
-          </section>
+          </main>
         </div>
       )}
     </>

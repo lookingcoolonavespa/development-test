@@ -7,7 +7,6 @@
   justify-content: center;
 }
 .product-select-wrapper .scroller-content {
-  padding: 20px 0;
   row-gap: 30px;
 }
 
@@ -20,6 +19,7 @@
 
 .product-image-wrapper {
   width: 100px;
+  cursor: pointer;
 }
 .product-image {
   aspect-ratio: 9/12;
@@ -30,6 +30,7 @@
   display: flex;
   overflow: hidden;
   margin: 0 20px;
+  cursor: pointer;
 }
 .product-title {
   overflow: hidden;

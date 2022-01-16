@@ -12,8 +12,8 @@ const ProductSelectButton = ({ isActive, isMobile, onClick }) => {
       <div className="icon-wrapper flex-centered">
         <img
           src={isActive ? arrowRightSVG : arrowLeftSVG}
-          height={isMobile ? '25px' : '35px'}
-          width={isMobile ? '25px' : '35px'}
+          height={isMobile ? 25 : 35}
+          width={isMobile ? 25 : 35}
           alt={isActive ? 'right arrow' : 'left arrow'}
           className="arrow-icon"
         />

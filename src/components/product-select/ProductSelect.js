@@ -13,7 +13,7 @@ const ProductSelect = ({
         <img
           src={product.image}
           alt={product.title}
-          width={isMobile ? '50px' : '100px'}
+          width={isMobile ? 50 : 100}
           height="auto"
           className="product-image"
           onLoad={setFinishLoading}

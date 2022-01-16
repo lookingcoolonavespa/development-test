@@ -21,6 +21,9 @@
 .product-image-wrapper {
   width: 100px;
 }
+.product-image {
+  aspect-ratio: 9/12;
+}
 
 .product-title-wrapper {
   flex: 1;

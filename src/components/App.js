@@ -34,48 +34,50 @@ function App() {
   return (
     <>
       <LoadingScreen isLoading={loading} />
-      <div className="App flex-column border-box">
-        <header>
-          <PageHeader
-            title={"Kermit's General Shop"}
-            description={
-              'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, illo. Nemo illum consequuntur architecto repellat quo, eius deserunt reiciendis repellendus.'
-            }
-          />
-        </header>
-        <section
-          className={`main_content border-box ${
-            isMobile.current ? 'mobile' : ''
-          }`}
-        >
-          <ProductsContext.Provider value={{ products }}>
-            <ProductSelectWrapper
-              activeProduct={activeProduct}
-              setActiveProduct={(index) => {
-                setActiveProduct(index);
-                setShowProductInfo(true);
-              }}
-              setFinishLoading={setFinishLoading}
-              isMobile={isMobile.current}
-              isVisible={!showProductInfo}
+      {products && (
+        <div className="App flex-column border-box">
+          <header>
+            <PageHeader
+              title={"Kermit's General Shop"}
+              description={
+                'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, illo. Nemo illum consequuntur architecto repellat quo, eius deserunt reiciendis repellendus.'
+              }
             />
-            <ProductInfo
-              activeProduct={activeProduct}
-              isMobile={isMobile.current}
-              isVisible={showProductInfo}
-            />
-          </ProductsContext.Provider>
-          {isMobile.current && showProductInfo && (
-            <button
-              className="flat-btn"
-              type="button"
-              onClick={() => setShowProductInfo(false)}
-            >
-              Go back to products
-            </button>
-          )}
-        </section>
-      </div>
+          </header>
+          <section
+            className={`main_content border-box ${
+              isMobile.current ? 'mobile' : ''
+            }`}
+          >
+            <ProductsContext.Provider value={{ products }}>
+              <ProductSelectWrapper
+                activeProduct={activeProduct}
+                setActiveProduct={(index) => {
+                  setActiveProduct(index);
+                  setShowProductInfo(true);
+                }}
+                setFinishLoading={setFinishLoading}
+                isMobile={isMobile.current}
+                isVisible={!showProductInfo}
+              />
+              <ProductInfo
+                activeProduct={activeProduct}
+                isMobile={isMobile.current}
+                isVisible={showProductInfo}
+              />
+            </ProductsContext.Provider>
+            {isMobile.current && showProductInfo && (
+              <button
+                className="flat-btn"
+                type="button"
+                onClick={() => setShowProductInfo(false)}
+              >
+                Go back to products
+              </button>
+            )}
+          </section>
+        </div>
+      )}
     </>
   );
 }

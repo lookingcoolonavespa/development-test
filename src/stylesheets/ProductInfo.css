@@ -36,3 +36,9 @@
 .add_to_cart-btn:hover {
   filter: brightness(1.1);
 }
+
+@media screen and (max-width: 768px) {
+  .product_info-ctn {
+    flex: 1;
+  }
+}

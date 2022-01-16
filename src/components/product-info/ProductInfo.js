@@ -13,11 +13,15 @@ import '../../stylesheets/ProductInfo.css';
     - 
 */
 
-const ProductInfo = ({ activeProduct }) => {
+const ProductInfo = ({ activeProduct, isMobile, isVisible }) => {
   const { products } = useContext(ProductsContext);
 
   return (
-    <div className="product_info-ctn flex-column">
+    <div
+      className={`product_info-ctn flex-column ${
+        !isMobile ? '' : isVisible ? '' : 'inactive'
+      }`}
+    >
       {products &&
         products.map((p, i) => {
           const visibilityClass = i === activeProduct ? '' : 'inactive';

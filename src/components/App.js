@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getStuffViaFetch } from '../logic/helperFuncs';
 import ProductsContext from '../logic/contexts/productsContext';
+import useMobileCheck from '../logic/hooks/useMobileCheck';
 
 import '../stylesheets/App.css';
 import PageHeader from './misc/PageHeader';
@@ -9,14 +10,18 @@ import ProductSelectWrapper from './product-select/ProductSelectWrapper';
 import LoadingScreen from './misc/LoadingScreen';
 
 function App() {
+  const { isMobile } = useMobileCheck();
+
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState();
   const [activeProduct, setActiveProduct] = useState(0); //index of active product
+
+  const [showProductInfo, setShowProductInfo] = useState(false);
+
   useEffect(() => {
     const url = 'https://fakestoreapi.com/products?limit=5';
     (async function () {
       const listOfProducts = await getStuffViaFetch(url);
-      console.log(listOfProducts);
       setProducts(listOfProducts);
     })();
   }, []);
@@ -31,23 +36,43 @@ function App() {
       <div className="App flex-column border-box">
         <header>
           <PageHeader
-            title={"Howie's Mancil Shop"}
+            title={"Kermit's General Shop"}
             description={
               'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, illo. Nemo illum consequuntur architecto repellat quo, eius deserunt reiciendis repellendus.'
             }
           />
         </header>
-        <section className="main_content border-box">
+        <section
+          className={`main_content border-box ${
+            isMobile.current ? 'mobile' : ''
+          }`}
+        >
           <ProductsContext.Provider value={{ products }}>
-            {' '}
-            {/* context just in case i want to extend*/}
             <ProductSelectWrapper
               activeProduct={activeProduct}
-              setActiveProduct={setActiveProduct}
+              setActiveProduct={(index) => {
+                setActiveProduct(index);
+                setShowProductInfo(true);
+              }}
               setFinishLoading={setFinishLoading}
+              isMobile={isMobile.current}
+              isVisible={!showProductInfo}
             />
-            <ProductInfo activeProduct={activeProduct} />
+            <ProductInfo
+              activeProduct={activeProduct}
+              isMobile={isMobile.current}
+              isVisible={showProductInfo}
+            />
           </ProductsContext.Provider>
+          {isMobile.current && showProductInfo && (
+            <button
+              className="flat-btn"
+              type="button"
+              onClick={() => setShowProductInfo(false)}
+            >
+              Go back to products
+            </button>
+          )}
         </section>
       </div>
     </>

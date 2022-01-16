@@ -3,6 +3,10 @@
   max-width: 600px;
 }
 
+.page-header h1 {
+  text-align: center;
+}
+
 .page-header .text-block {
   text-align: center;
 }

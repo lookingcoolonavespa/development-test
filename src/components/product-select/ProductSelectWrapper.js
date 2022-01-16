@@ -10,6 +10,8 @@ const ProductSelectWrapper = ({
   activeProduct,
   setActiveProduct,
   setFinishLoading,
+  isMobile,
+  isVisible,
 }) => {
   const { products } = useContext(ProductsContext);
   const [imagesLoaded, setImagesLoaded] = useState([]);
@@ -21,7 +23,11 @@ const ProductSelectWrapper = ({
   }, [products, imagesLoaded, setFinishLoading]);
 
   return (
-    <div className="product-select-wrapper">
+    <div
+      className={`product-select-wrapper ${
+        !isMobile ? '' : isVisible ? '' : 'inactive' // only perform isVisible check if not on mobile
+      }`}
+    >
       <div className="scroller flex-column">
         <div className="scroller-content flex-column">
           {products &&
@@ -32,8 +38,11 @@ const ProductSelectWrapper = ({
                   key={getUniqueKey()}
                   product={p}
                   isActive={isActive}
-                  setActiveProduct={() => setActiveProduct(i)}
+                  setActiveProduct={() => {
+                    setActiveProduct(i);
+                  }}
                   setFinishLoading={() => {
+                    // when images is loaded, add index to imagesLoaded
                     if (imagesLoaded.includes(i)) return;
                     setImagesLoaded((prev) => [...prev, i]);
                   }}

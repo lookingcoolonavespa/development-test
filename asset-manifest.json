@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/development-test/static/css/main.3daba5ba.css",
-    "main.js": "/development-test/static/js/main.c114982f.js",
+    "main.js": "/development-test/static/js/main.23b245f5.js",
     "index.html": "/development-test/index.html",
     "static/media/star-s-line.svg": "/development-test/static/media/star-s-line.aeb25df9e85c7a92fe3367e45ed7b8a2.svg",
     "static/media/star-half-s-fill.svg": "/development-test/static/media/star-half-s-fill.59d5cb928a93bcb9e0a0aa15c3e1b771.svg",
@@ -9,10 +9,10 @@
     "static/media/arrow-right-s-line.svg": "/development-test/static/media/arrow-right-s-line.5e3e4e57f27467a439d7c7ab2d085534.svg",
     "static/media/arrow-left-s-line.svg": "/development-test/static/media/arrow-left-s-line.27e63cb8d6f2ef583aa99bf9def67e01.svg",
     "main.3daba5ba.css.map": "/development-test/static/css/main.3daba5ba.css.map",
-    "main.c114982f.js.map": "/development-test/static/js/main.c114982f.js.map"
+    "main.23b245f5.js.map": "/development-test/static/js/main.23b245f5.js.map"
   },
   "entrypoints": [
     "static/css/main.3daba5ba.css",
-    "static/js/main.c114982f.js"
+    "static/js/main.23b245f5.js"
   ]
 }

@@ -16,4 +16,13 @@ function getUniqueKey() {
   return keyProp++;
 }
 
-export { getStuffViaFetch, getUniqueKey };
+function normalizePrice(num) {
+  const numStr = num.toString();
+  const hasDecimal = numStr.includes('.');
+  if (!hasDecimal) return num.toString() + '.00';
+
+  const afterDecimalLength = numStr.slice(numStr.indexOf('.') + 1).length;
+  if (afterDecimalLength === 1) return numStr + '0';
+  return num;
+}
+export { getStuffViaFetch, getUniqueKey, normalizePrice };

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import ProductsContext from '../../logic/contexts/productsContext';
-import { getUniqueKey } from '../../logic/helperFuncs';
+import { getUniqueKey, normalizePrice } from '../../logic/helperFuncs';
 
 import TextBlock from '../misc/TextBlock';
 import Rating from './Rating';
@@ -27,7 +27,7 @@ const ProductInfo = ({ activeProduct }) => {
               className={`product_info-wrapper ${visibilityClass}`}
             >
               <div className="product-price-wrapper">
-                <h4>&#36;{p.price}</h4>
+                <h4>&#36;{normalizePrice(p.price)}</h4>
               </div>
               <TextBlock className="product-desc">{p.description}</TextBlock>
               <Rating rating={p.rating.rate} reviewCount={p.rating.count} />

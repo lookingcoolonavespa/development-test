@@ -22,6 +22,7 @@ const Rating = ({ rating, reviewCount }) => {
         {[
           [...Array(numOfFilledStars)].map(
             // create arrays to display stars
+            // map instead of fill to get unique keys for each div
             () => {
               return (
                 <div key={`a${getUniqueKey()}`} className="star-svg-wrapper">

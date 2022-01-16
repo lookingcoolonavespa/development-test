@@ -16,6 +16,7 @@ function App() {
     const url = 'https://fakestoreapi.com/products?limit=5';
     (async function () {
       const listOfProducts = await getStuffViaFetch(url);
+      console.log(listOfProducts);
       setProducts(listOfProducts);
     })();
   }, []);

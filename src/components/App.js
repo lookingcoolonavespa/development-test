@@ -1,38 +1,55 @@
-import { useState, useEffect } from 'react';
-import { getStuffFromApi } from '../logic/helperFuncs';
+import { useState, useEffect, useCallback } from 'react';
+import { getStuffViaFetch } from '../logic/helperFuncs';
 import ProductsContext from '../logic/contexts/productsContext';
 
 import '../stylesheets/App.css';
 import PageHeader from './misc/PageHeader';
 import ProductInfo from './product-info/ProductInfo';
-import ProductSelect from './product-select/ProductSelect';
+import ProductSelectWrapper from './product-select/ProductSelectWrapper';
+import LoadingScreen from './misc/LoadingScreen';
 
 function App() {
+  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState();
+  const [activeProduct, setActiveProduct] = useState(0); //index of active product
   useEffect(() => {
     const url = 'https://fakestoreapi.com/products?limit=5';
     (async function () {
-      const listOfProducts = await getStuffFromApi(url);
+      const listOfProducts = await getStuffViaFetch(url);
       setProducts(listOfProducts);
     })();
   }, []);
 
+  const setFinishLoading = useCallback(() => {
+    setLoading(false);
+  }, [setLoading]);
+
   return (
-    <div className="App">
-      <PageHeader
-        title={"Howie's Mancil Shop"}
-        description={
-          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, illo. Nemo illum consequuntur architecto repellat quo, eius deserunt reiciendis repellendus.'
-        }
-      />
-      <ProductsContext.Provider value={{ products }}>
-        {products &&
-          products.map((p) => {
-            return <ProductSelect product={p} />;
-          })}
-        <ProductInfo />
-      </ProductsContext.Provider>
-    </div>
+    <>
+      <LoadingScreen isLoading={loading} />
+      <div className="App flex-column border-box">
+        <header>
+          <PageHeader
+            title={"Howie's Mancil Shop"}
+            description={
+              'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, illo. Nemo illum consequuntur architecto repellat quo, eius deserunt reiciendis repellendus.'
+            }
+          />
+        </header>
+        <section className="main_content border-box">
+          <ProductsContext.Provider value={{ products }}>
+            {' '}
+            {/* context just in case i want to extend*/}
+            <ProductSelectWrapper
+              activeProduct={activeProduct}
+              setActiveProduct={setActiveProduct}
+              setFinishLoading={setFinishLoading}
+            />
+            <ProductInfo activeProduct={activeProduct} />
+          </ProductsContext.Provider>
+        </section>
+      </div>
+    </>
   );
 }
 

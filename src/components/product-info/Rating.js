@@ -1,11 +1,13 @@
+import { getUniqueKey } from '../../logic/helperFuncs';
+
 import starEmptySVG from '../../assets/svg/star-s-line.svg';
 import starFilledSVG from '../../assets/svg/star-s-fill.svg';
 import starHalfSVG from '../../assets/svg/star-half-s-fill.svg';
 
 /* need to display 5 stars
 how many are filled depends on rating
-can math.floor to find how many are filled, subtract from 5 to get empty
-to get half, get decimal and do comparison
+can math.floor to find how many are filled, subtract from 5 to get empty stars
+to get half star, get decimal and do comparison
 */
 
 const Rating = ({ rating, reviewCount }) => {
@@ -17,23 +19,34 @@ const Rating = ({ rating, reviewCount }) => {
   return (
     <div className="rating-wrapper">
       <div className="stars-wrapper">
-        {Array(numOfFilledStars).fill(
-          <span className="star-filled-svg">
-            <img src={starFilledSVG} alt="" />
-          </span>
-        )}
-        {Array(numOfHalfStars).fill(
-          <span className="star-half-svg">
-            <img src={starHalfSVG} alt="" />
-          </span>
-        )}{' '}
-        {Array(numOfEmptyStars).fill(
-          <span className="star-empty-svg">
-            <img src={starEmptySVG} alt="" />
-          </span>
-        )}
+        {[
+          [...Array(numOfFilledStars)].map(
+            // create arrays to display stars
+            () => {
+              return (
+                <div key={`a${getUniqueKey()}`} className="star-svg-wrapper">
+                  <img src={starFilledSVG} alt="filled rating star" />
+                </div>
+              );
+            }
+          ),
+          [...Array(numOfHalfStars)].map(() => {
+            return (
+              <div key={`b${getUniqueKey()}`} className="star-svg-wrapper">
+                <img src={starHalfSVG} alt="half full rating star" />
+              </div>
+            );
+          }),
+          [...Array(numOfEmptyStars)].map(() => {
+            return (
+              <div key={`c${getUniqueKey()}`} className="star-svg-wrapper">
+                <img src={starEmptySVG} alt="empty rating star" />
+              </div>
+            );
+          }),
+        ]}
       </div>
-      <div className="review_count-wrapper">({reviewCount})</div>
+      <div className="review_count">({reviewCount})</div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-async function getStuffFromApi(url, handleError) {
+async function getStuffViaFetch(url, handleError) {
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error('something went wrong with api pull');
@@ -11,4 +11,9 @@ async function getStuffFromApi(url, handleError) {
   }
 }
 
-export { getStuffFromApi };
+let keyProp = 0;
+function getUniqueKey() {
+  return keyProp++;
+}
+
+export { getStuffViaFetch, getUniqueKey };

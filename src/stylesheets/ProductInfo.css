@@ -1,0 +1,37 @@
+.product_info-ctn {
+  justify-content: space-between;
+  padding: 40px 40px;
+  background-color: rgb(214, 214, 214);
+  max-width: 600px;
+  border-radius: 10px;
+}
+
+.product_info-wrapper {
+}
+
+/* rating */
+.rating-wrapper {
+  display: flex;
+  align-items: center;
+}
+.stars-wrapper {
+  display: flex;
+}
+.star-svg-wrapper {
+  display: flex;
+  filter: var(--rating-star-filter);
+}
+.review_count {
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.add_to_cart-btn {
+  align-self: center;
+  background-color: var(--action-color);
+  border-radius: 4px;
+  color: white;
+}
+.add_to_cart-btn:hover {
+  filter: brightness(1.1);
+}

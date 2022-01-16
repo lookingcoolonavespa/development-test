@@ -1,6 +1,6 @@
 const TextBlock = ({ children }) => {
   return (
-    <div>
+    <div className="text-block">
       <p>{children}</p>
     </div>
   );

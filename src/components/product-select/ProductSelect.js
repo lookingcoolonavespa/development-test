@@ -9,12 +9,15 @@ const ProductSelect = ({
 }) => {
   return (
     <div className="product-wrapper">
-      <div className="product-image-wrapper" onClick={setActiveProduct}>
+      <div
+        className="product-image-wrapper flex-centered"
+        onClick={setActiveProduct}
+      >
         <img
           src={product.image}
           alt={product.title}
-          width={isMobile ? 50 : 100}
-          height="auto"
+          width="auto"
+          height={isMobile ? 60 : 120}
           className="product-image"
           onLoad={setFinishLoading}
         />

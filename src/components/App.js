@@ -16,7 +16,7 @@ function App() {
   const [products, setProducts] = useState();
   const [activeProduct, setActiveProduct] = useState(0); //index of active product
 
-  const [showProductInfo, setShowProductInfo] = useState(false);
+  const [showProductInfo, setShowProductInfo] = useState(false); // for mobile view only
 
   useEffect(() => {
     const url = 'https://fakestoreapi.com/products?limit=5';

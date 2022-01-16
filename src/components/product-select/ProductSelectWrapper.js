@@ -38,11 +38,12 @@ const ProductSelectWrapper = ({
                   key={getUniqueKey()}
                   product={p}
                   isActive={isActive}
+                  isMobile={isMobile}
                   setActiveProduct={() => {
                     setActiveProduct(i);
                   }}
                   setFinishLoading={() => {
-                    // when images is loaded, add index to imagesLoaded
+                    // when image is loaded, add index to imagesLoaded
                     if (imagesLoaded.includes(i)) return;
                     setImagesLoaded((prev) => [...prev, i]);
                   }}

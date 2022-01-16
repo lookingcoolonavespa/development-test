@@ -3,6 +3,7 @@ import ProductSelectButton from './ProductSelectButton';
 const ProductSelect = ({
   product,
   isActive,
+  isMobile,
   setActiveProduct,
   setFinishLoading,
 }) => {
@@ -12,6 +13,8 @@ const ProductSelect = ({
         <img
           src={product.image}
           alt={product.title}
+          width={isMobile ? '50px' : '100px'}
+          height="auto"
           className="product-image"
           onLoad={setFinishLoading}
         />
@@ -19,7 +22,11 @@ const ProductSelect = ({
       <div className="product-title-wrapper" onClick={setActiveProduct}>
         <h3 className="product-title">{product.title}</h3>
       </div>
-      <ProductSelectButton isActive={isActive} onClick={setActiveProduct} />
+      <ProductSelectButton
+        isActive={isActive}
+        isMobile={isMobile}
+        onClick={setActiveProduct}
+      />
     </div>
   );
 };

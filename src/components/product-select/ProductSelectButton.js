@@ -1,7 +1,7 @@
 import arrowLeftSVG from '../../assets/svg/arrow-left-s-line.svg';
 import arrowRightSVG from '../../assets/svg/arrow-right-s-line.svg';
 
-const ProductSelectButton = ({ isActive, onClick }) => {
+const ProductSelectButton = ({ isActive, isMobile, onClick }) => {
   const visibilityClass = isActive ? 'active' : '';
   return (
     <button
@@ -12,6 +12,8 @@ const ProductSelectButton = ({ isActive, onClick }) => {
       <div className="icon-wrapper flex-centered">
         <img
           src={isActive ? arrowRightSVG : arrowLeftSVG}
+          height={isMobile ? '25px' : '35px'}
+          width={isMobile ? '25px' : '35px'}
           alt={isActive ? 'right arrow' : 'left arrow'}
           className="arrow-icon"
         />

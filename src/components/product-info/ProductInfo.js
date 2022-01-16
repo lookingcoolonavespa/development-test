@@ -7,10 +7,9 @@ import Rating from './Rating';
 
 import '../../stylesheets/ProductInfo.css';
 
-/* need to have all products in html
+/* need to have all products in html, how to achieve this?
     - slider
     - display: none
-    - 
 */
 
 const ProductInfo = ({ activeProduct, isMobile, isVisible }) => {
@@ -19,7 +18,7 @@ const ProductInfo = ({ activeProduct, isMobile, isVisible }) => {
   return (
     <div
       className={`product_info-ctn flex-column ${
-        !isMobile ? '' : isVisible ? '' : 'inactive'
+        !isMobile ? '' : isVisible ? '' : 'inactive' // only perform isVisible check if not on mobile
       }`}
     >
       {products &&

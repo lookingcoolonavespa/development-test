@@ -27,6 +27,7 @@ function App() {
   }, []);
 
   const setFinishLoading = useCallback(() => {
+    // function is passed as props
     setLoading(false);
   }, [setLoading]);
 

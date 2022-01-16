@@ -26,7 +26,12 @@ const Rating = ({ rating, reviewCount }) => {
             () => {
               return (
                 <div key={`a${getUniqueKey()}`} className="star-svg-wrapper">
-                  <img src={starFilledSVG} alt="filled rating star" />
+                  <img
+                    src={starFilledSVG}
+                    height="24px"
+                    width="24px"
+                    alt="filled rating star"
+                  />
                 </div>
               );
             }
@@ -34,14 +39,24 @@ const Rating = ({ rating, reviewCount }) => {
           [...Array(numOfHalfStars)].map(() => {
             return (
               <div key={`b${getUniqueKey()}`} className="star-svg-wrapper">
-                <img src={starHalfSVG} alt="half full rating star" />
+                <img
+                  src={starHalfSVG}
+                  height="24px"
+                  width="24px"
+                  alt="half full rating star"
+                />
               </div>
             );
           }),
           [...Array(numOfEmptyStars)].map(() => {
             return (
               <div key={`c${getUniqueKey()}`} className="star-svg-wrapper">
-                <img src={starEmptySVG} alt="empty rating star" />
+                <img
+                  src={starEmptySVG}
+                  height="24px"
+                  width="24px"
+                  alt="empty rating star"
+                />
               </div>
             );
           }),

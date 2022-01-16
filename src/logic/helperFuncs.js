@@ -25,4 +25,5 @@ function normalizePrice(num) {
   if (afterDecimalLength === 1) return numStr + '0';
   return num;
 }
+
 export { getStuffViaFetch, getUniqueKey, normalizePrice };

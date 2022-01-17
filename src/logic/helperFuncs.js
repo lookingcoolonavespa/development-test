@@ -26,4 +26,8 @@ function normalizePrice(num) {
   return num;
 }
 
-export { getStuffViaFetch, getUniqueKey, normalizePrice };
+function capitalizeSentence(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export { getStuffViaFetch, getUniqueKey, normalizePrice, capitalizeSentence };

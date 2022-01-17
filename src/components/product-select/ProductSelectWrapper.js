@@ -17,8 +17,8 @@ const ProductSelectWrapper = ({
   const [imagesLoaded, setImagesLoaded] = useState([]);
 
   useEffect(() => {
-    // wait for all images to finish loading
     if (!products) return;
+    // wait for all images to finish loading
     if (products.length === imagesLoaded.length) setFinishLoading();
   }, [products, imagesLoaded, setFinishLoading]);
 

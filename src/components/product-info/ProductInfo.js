@@ -1,6 +1,10 @@
 import { useContext } from 'react';
 import ProductsContext from '../../logic/contexts/productsContext';
-import { getUniqueKey, normalizePrice } from '../../logic/helperFuncs';
+import {
+  getUniqueKey,
+  normalizePrice,
+  capitalizeSentence,
+} from '../../logic/helperFuncs';
 
 import TextBlock from '../misc/TextBlock';
 import Rating from './Rating';
@@ -32,7 +36,9 @@ const ProductInfo = ({ activeProduct, isMobile, isVisible }) => {
               <div className="product-price-wrapper">
                 <h4>&#36;{normalizePrice(p.price)}</h4>
               </div>
-              <TextBlock className="product-desc">{p.description}</TextBlock>
+              <TextBlock className="product-desc">
+                {capitalizeSentence(p.description)}
+              </TextBlock>
               <Rating rating={p.rating.rate} reviewCount={p.rating.count} />
             </div>
           );
